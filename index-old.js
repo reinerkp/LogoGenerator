@@ -1,27 +1,26 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const { type } = require("os");
-const shapes = require('./lib/shapes.js');
+const color = require("color")
+const Circle = require("./shapes")
+// const generateSVG = require()
 
+// class LogoPrompt {
+//     constructor() {
+//         this.logoletters = null;
+//         this.shapes = null;
+//         this.textColor = null;
+//         this.shapeColor = null;
+//     }
+// }
+
+// user prompts for custom logo
+// const askQuestions = () => {
 inquirer
-    .prompt ([
+    .prompt([
         {
             type: 'input',
             name: 'logoLetters',
-            message: 'Please enter up to 3 characters for your logo:',
-            validate: (input) => {
-                if (input.length > 3) {
-                    return 'Your text is too long. Enter up to 3 characters for your logo.';
-                }
-                else if (input.length <= 0) {
-                    return 'No input. Enter up to 3 characters for your logo.';
-                }
-                else {
-                    return true;
-                }
-
-                //return true;
-            }
+            message: 'Please enter up to 3 characters for your logo: ',
             // Validate maybe with a return for length of answer?
             // validate: (input) => {
             //     return input.length > 0 && input.length <= 3
@@ -30,15 +29,14 @@ inquirer
         },
         {
             type: 'list',
-            name: 'shape',
+            name: 'shapes',
             message: 'Please choose a shape for your logo:',
-            choices: ["Circle", "Triangle", "Square"],
+            choices: ["circle", "triangle", "square"],
         },
         {
-            type: 'list',
+            type: 'input',
             name: 'textColor',
             message: 'Choose the color of the text:',
-            choices: ["Green", "Blue", "Orange", "Yellow", "Red", "Pink", "Purple", "White", "Black", "Brown"],
             // another Validate with return?
             // validate: (input) => {
             //     const color= Color(input)
@@ -47,10 +45,9 @@ inquirer
             // Need an NPM for color and how do you pull from it?
         },
         {
-            type: 'list',
+            type: 'input',
             name: 'shapeColor',
-            message: 'Choose the color of the shape:',
-            choices: ["Green", "Blue", "Orange", "Yellow", "Red", "Pink", "Purple", "White", "Black", "Brown"],
+            message: 'Choose the color of the shape: ',
             // another Validate with return?
             // validate: (input) => {
             //     const color= Color(input)
@@ -61,22 +58,7 @@ inquirer
 
     ])
     .then((answers) => {
-        console.log(answers);
-        var shape;
-        switch (answers.shape) {
-            case "Circle":
-                shape = new Circle();
-                console.log("Circle");
-            case "Triange":
-                shape = new Triangle();
-                console.log("Triangle");
-            case "Square":
-                shape = new Square();
-                console.log("Square");
-            default:
-                console.log("Invalid");
-        }
-    })
+        console.log(answers);})
 //         var shapes;
 //         // console.log(answers);
 //         if (answers.shapes === "circle") {
