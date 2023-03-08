@@ -1,7 +1,8 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const { type } = require("os");
-const shapes = require('./lib/shapes.js');
+const { generateSVG } = require("./lib/generateSVG");
+const { buildShape } = require("./lib/buildShape");
 
 inquirer
     .prompt ([
@@ -62,21 +63,14 @@ inquirer
     ])
     .then((answers) => {
         console.log(answers);
-        var shape;
-        switch (answers.shape) {
-            case "Circle":
-                shape = new Circle();
-                console.log("Circle");
-            case "Triange":
-                shape = new Triangle();
-                console.log("Triangle");
-            case "Square":
-                shape = new Square();
-                console.log("Square");
-            default:
-                console.log("Invalid");
-        }
+        const outPath = './dist/logo.svg';
+        const logo = buildShape(answers);
+
+        // Output the SVG
+        fs.writeFile(outPath, generateSVG(logo), (err) =>
+            err ? console.error(err) : console.log('Successfully generated logo.svg'));
     })
+    .catch((err) => console.error(err));
 //         var shapes;
 //         // console.log(answers);
 //         if (answers.shapes === "circle") {
@@ -96,8 +90,3 @@ inquirer
 
 // askQuestions();
 // // What function do I need to do generate te SVG fil
-
-// Function for SVG generation
-function generateSVG(letters, shape, textColor, shapeColor) {
-
-}
