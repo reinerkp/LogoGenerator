@@ -21,13 +21,9 @@ inquirer
                     return true;
                 }
 
-                //return true;
+                
             }
-            // Validate maybe with a return for length of answer?
-            // validate: (input) => {
-            //     return input.length > 0 && input.length <= 3
-            // }
-            // test parameter for this and how to do that?
+            
         },
         {
             type: 'list',
@@ -40,24 +36,14 @@ inquirer
             name: 'textColor',
             message: 'Choose the color of the text:',
             choices: ["Green", "Blue", "Orange", "Yellow", "Red", "Pink", "Purple", "White", "Black", "Brown"],
-            // another Validate with return?
-            // validate: (input) => {
-            //     const color= Color(input)
-            //     return =???
-            // }
-            // Need an NPM for color and how do you pull from it?
+         
         },
         {
             type: 'list',
             name: 'shapeColor',
             message: 'Choose the color of the shape:',
             choices: ["Green", "Blue", "Orange", "Yellow", "Red", "Pink", "Purple", "White", "Black", "Brown"],
-            // another Validate with return?
-            // validate: (input) => {
-            //     const color= Color(input)
-            //     return =???
-            // }
-            // Need an NPM for color and how do you pull from it?
+     
         },
 
     ])
@@ -71,22 +57,7 @@ inquirer
             err ? console.error(err) : console.log('Successfully generated logo.svg'));
     })
     .catch((err) => console.error(err));
-//         var shapes;
-//         // console.log(answers);
-//         if (answers.shapes === "circle") {
-//             shapes = new Circle()
-//             console.log(shapes)
-//         }
-//         if (answers.shapes === "square") {
-//             shapes = new Circle()
-//             console.log(shapes)
-//         }
-//         if (answers.shapes === "triangle") {
-//             shapes = new Circle()
-//             console.log(shapes)
-//         }
-//         shapes.setColor
-// }
+
 
 // askQuestions();
 // // What function do I need to do generate te SVG fil
