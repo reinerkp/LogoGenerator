@@ -59,5 +59,3 @@ inquirer
     .catch((err) => console.error(err));
 
 
-// askQuestions();
-// // What function do I need to do generate te SVG fil
